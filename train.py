@@ -1,9 +1,8 @@
 """
-Trainingsskript für das durchgängige Kursprojekt – mit MLflow-Tracking
-gegen den containerisierten Server (Tag 7).
+Musterlösung zu train_mit_registry.py (Tag 8) – NUR für den Kursleiter.
 """
-import joblib
 import mlflow
+import mlflow.sklearn
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -12,7 +11,7 @@ from sklearn.metrics import accuracy_score
 mlflow.set_tracking_uri("http://localhost:5000")
 mlflow.set_experiment("iris-klassifikator")
 
-N_ESTIMATORS = 100
+N_ESTIMATORS = 2
 
 
 def main():
@@ -31,13 +30,12 @@ def main():
 
         accuracy = accuracy_score(y_test, model.predict(X_test))
         print(f"Accuracy auf Testdaten: {accuracy:.3f}")
-
         mlflow.log_metric("accuracy", accuracy)
 
-        joblib.dump(model, "model.pkl")
-        mlflow.log_artifact("model.pkl")
+        mlflow.sklearn.log_model(model, "model", registered_model_name="iris-classifier",
+                                 skops_trusted_types=["sklearn.tree._tree.Tree"],)
 
-        print("Modell gespeichert und in MLflow getrackt.")
+        print("Modell trainiert, getrackt und registriert.")
 
 
 if __name__ == "__main__":
