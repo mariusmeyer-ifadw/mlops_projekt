@@ -1,0 +1,43 @@
+[project]
+name = "mlops-projekt"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Marius Meyer", email = "marius.meyer@ifadw.de" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "boto3==1.35.36",
+    "docker>=7.2.0",
+    "dvc>=3.67.1",
+    "ifadw-treeviz>=1.0.2",
+    "imblearn>=0.0",
+    "ipywidgets>=8.1.9",
+    "joblib>=1.5.3",
+    "keras>=3.15.1",
+    "lime>=0.2.0.1",
+    "matplotlib>=3.11.1",
+    "minio>=7.2.20",
+    "missingno>=0.5.2",
+    "mlflow>=3.15.1",
+    "optuna>=5.0.0",
+    "pandas>=2.3.3",
+    "pandera>=0.33.1",
+    "plotly>=6.9.0",
+    "polars>=1.43.2",
+    "prophet>=1.4.0",
+    "scikit-learn>=1.9.0",
+    "seaborn>=0.13.2",
+    "shap>=0.52.0",
+    "spyder-kernels==2.5",
+    "statsmodels>=0.15.0",
+    "tensorflow[and-cuda]==2.19",
+]
+
+[project.scripts]
+mlops-projekt = "mlops_projekt:main"
+
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"
