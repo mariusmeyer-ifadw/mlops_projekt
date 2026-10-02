@@ -9,7 +9,7 @@ Echte Tests mit gemocktem Modell kommen bei Tag 15.
 
 
 def test_addition():
-    assert 1 + 1 == 2
+    assert 2 + 1 == 3
 
 
 def test_string_upper():
