@@ -1,7 +1,7 @@
 FROM python:3.12-slim
 WORKDIR /app
 COPY pyproject.toml .
-RUN pip install uv && uv pip install --system --no-cache-dir .
+RUN pip install uv && uv pip install --system --no-cache-dir -r pyproject.toml
 COPY main.py .
 
 EXPOSE 8000
