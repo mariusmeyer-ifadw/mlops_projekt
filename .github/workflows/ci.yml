@@ -17,6 +17,12 @@ jobs:
       - name: Code auschecken
         uses: actions/checkout@v7
 
+      - name: Cache wiederverwenden
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ hashFiles('requirements.txt') }}
+
       - name: Python einrichten
         uses: actions/setup-python@v7
         with:
@@ -26,7 +32,7 @@ jobs:
         uses: astral-sh/setup-uv@v9.0.0
 
       - name: Abhängigkeiten installieren
-        run: uv pip install --system .
+        run: uv pip install --system -r requirements.txt
 
       - name: Tests ausführen
         run: pytest
@@ -49,3 +55,24 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Trivy-Scan
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: ghcr.io/${{ github.repository }}:latest
+          severity: CRITICAL
+          exit-code: 1
+
+  deploy-staging:
+    needs: test-and-build
+    environment: staging
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploy to staging"
+
+  deploy-production:
+    needs: deploy-staging
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploy to production"
