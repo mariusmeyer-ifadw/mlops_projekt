@@ -1,0 +1,27 @@
+name: Scheduled Retraining (Platzhalter)
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: uv installieren
+        uses: astral-sh/setup-uv@v3
+
+      - name: scikit-learn installieren
+        run: uv pip install --system scikit-learn
+
+      - name: Platzhalter-Retraining ausführen
+        run: python retrain_placeholder.py
