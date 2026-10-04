@@ -21,7 +21,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: ~/.cache/uv
-          key: uv-${{ hashFiles('requirements.txt') }}
+          key: uv-${{ hashFiles('uv.lock') }}
 
       - name: Python einrichten
         uses: actions/setup-python@v7
@@ -32,10 +32,10 @@ jobs:
         uses: astral-sh/setup-uv@v9.0.0
 
       - name: Abhängigkeiten installieren
-        run: uv pip install --system -r requirements.txt
+        run: uv sync --locked
 
       - name: Tests ausführen
-        run: pytest
+        run: uv run pytest
 
       - name: Docker Buildx einrichten
         uses: docker/setup-buildx-action@v4
