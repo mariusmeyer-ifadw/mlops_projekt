@@ -18,20 +18,21 @@ def train_model():
     print("Trainiere Modell...")
     subprocess.run(["python", "train.py"], check=True)
 
-
+'''
 @task(retries=3, retry_delay_seconds=5)
 def instabiler_schritt():
     print("Führe absichtlich instabilen Schritt aus...")
     if random.random() < 0.6:
         raise RuntimeError("Simulierter, kurzzeitiger Fehler")
     print("Instabiler Schritt erfolgreich.")
+'''
 
 
 @flow
 def pipeline():
     validate_data()
     train_model()
-    instabiler_schritt()
+    # instabiler_schritt()
 
 
 if __name__ == "__main__":
