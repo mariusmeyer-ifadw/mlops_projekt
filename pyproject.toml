@@ -28,6 +28,7 @@ dependencies = [
     "pathspec==0.12.1",
     "plotly>=6.9.0",
     "polars>=1.43.2",
+    "prefect==3.8.7",
     "prophet>=1.4.0",
     "pytest>=9.1.1",
     "scikit-learn>=1.9.0",
