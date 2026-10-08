@@ -3107,6 +3107,12 @@ dependencies = [
     { name = "tensorflow", extra = ["and-cuda"] },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "httpx" },
+    { name = "pytest" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "boto3", specifier = "==1.35.36" },
@@ -3138,6 +3144,12 @@ requires-dist = [
     { name = "spyder-kernels", specifier = "==2.5" },
     { name = "statsmodels", specifier = ">=0.15.0" },
     { name = "tensorflow", extras = ["and-cuda"], specifier = "==2.19" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "httpx", specifier = ">=0.28.1" },
+    { name = "pytest", specifier = ">=9.1.1" },
 ]
 
 [[package]]
