@@ -1,0 +1,12 @@
+[project]
+name = "llm-app"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb==0.5.20",
+    "fastapi==0.115.0",
+    "jinja2==3.1.4",
+    "ollama==0.4.4",
+    "posthog==5.4.0",
+    "uvicorn==0.30.6",
+]

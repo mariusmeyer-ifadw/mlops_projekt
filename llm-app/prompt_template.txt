@@ -1,0 +1,6 @@
+Du bist ein hilfreicher Assistent. Nutze den folgenden Kontext, um die Frage zu beantworten. Wenn der Kontext die Frage nicht beantwortet, sag das ehrlich, statt zu raten.
+
+Kontext:
+{{ context }}
+
+Frage: {{ question }}

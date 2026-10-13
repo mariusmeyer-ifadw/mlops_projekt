@@ -1,0 +1,4 @@
+Das Kursprojekt ist eine Iris-Klassifikator-API, die mit FastAPI gebaut und in Docker verpackt wird.
+Modelle werden in MLflow registriert, der Alias champion markiert die Version, die produktiv läuft.
+Die Daten der Übungen werden mit DVC versioniert und in MinIO gespeichert.
+Der Self-hosted Runner führt die CI/CD-Pipeline aus GitHub Actions auf dem eigenen Laptop aus.
