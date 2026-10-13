@@ -3,6 +3,9 @@ name: End-to-End ML Pipeline
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'llm-app/**'
+      - '.github/workflows/eval.yml'
 
 # Für den Push ins GHCR (wie bei Tag 10/11)
 permissions:
