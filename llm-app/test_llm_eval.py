@@ -18,6 +18,7 @@ def get_app_response(question: str) -> tuple[str, list[str]]:
     response = ollama_client.chat(
         model=CHAT_MODEL,
         messages=[{"role": "user", "content": prompt}],
+        options={"temperature": 0},
     )
     return response["message"]["content"], context_chunks
 
