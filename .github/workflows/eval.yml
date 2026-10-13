@@ -1,0 +1,31 @@
+name: LLM Evaluation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'llm-app/**'
+      - '.github/workflows/eval.yml'
+
+jobs:
+  evaluate:
+    runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: llm-app
+    steps:
+      - name: Code auschecken
+        uses: actions/checkout@v7
+
+      # Variante requirements.txt. Kein "--system": das scheitert unter
+      # Ubuntu/Mint ("externally managed").
+      # Variante pyproject.toml: diesen Schritt durch "run: uv sync" ersetzen.
+      - name: Abhängigkeiten installieren
+        run: |
+          uv sync
+
+      - name: Ollama als Judge einrichten
+        run: uv run deepeval set-ollama --model llama3.2:1b --save dotenv
+
+      - name: Evals ausführen
+        run: uv run deepeval test run test_llm_eval.py

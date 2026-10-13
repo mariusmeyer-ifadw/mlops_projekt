@@ -1,0 +1,3 @@
+# Zusätzliche Pakete für die Evals (nicht im Docker-Image der App)
+-r requirements.txt
+deepeval==4.2.2
