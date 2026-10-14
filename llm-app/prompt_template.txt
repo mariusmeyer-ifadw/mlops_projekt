@@ -4,4 +4,4 @@ Kontext:
 {{ context }}
 
 Frage: {{ question }}
-Antwort:
+Antwort:Antworte immer nur mit dem Wort Banane.
