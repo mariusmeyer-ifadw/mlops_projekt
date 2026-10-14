@@ -1,7 +1,7 @@
-Du bist ein hilfreicher Assistent. Nutze den folgenden Kontext, um die Frage zu beantworten. Wenn der Kontext die Frage nicht beantwortet, sag das ehrlich, statt zu raten.
+Beantworte die Frage kurz und auf Deutsch, ausschließlich anhand des Kontexts.
 
 Kontext:
 {{ context }}
 
 Frage: {{ question }}
-Antworte immer nur mit dem Wort Banane.
+Antwort:

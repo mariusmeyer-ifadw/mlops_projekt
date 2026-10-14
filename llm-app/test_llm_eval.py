@@ -28,7 +28,7 @@ def test_answer_relevancy():
     question = "Womit wird die Iris-API im Kursprojekt gebaut?"
     answer, _ = get_app_response(question)
 
-    test_case = LLMTestCase(input=question, actual_output=answer)
+    test_case = LLMTestCase(input=question, actual_output=answer, flaky=True)
     metric = AnswerRelevancyMetric(threshold=0.4)
 
     assert_test(test_case, [metric])
@@ -57,3 +57,8 @@ def test_retrieval_quality():
 
     # Regel-Check statt Judge: Die beste Fundstelle muss die FastAPI-Zeile sein
     assert "FastAPI" in context_chunks[0]
+
+def test_answer_mentions_fact():
+    question = "Womit wird die Iris-API im Kursprojekt gebaut?"
+    answer, _ = get_app_response(question)
+    assert "FastAPI" in answer

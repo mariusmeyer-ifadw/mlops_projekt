@@ -29,3 +29,5 @@ jobs:
 
       - name: Evals ausführen
         run: uv run deepeval test run test_llm_eval.py
+        env:
+          TEMPERATURE: "0.3"
